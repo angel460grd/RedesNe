@@ -13,5 +13,12 @@ import java.util.ArrayList;
  */
 public class Capa {
     ArrayList<Neurona> neusornas=new ArrayList<>();
-    
+    public void crearNeuronasInternar(int entradas)
+    {
+        
+    }
+    public void crearNeuronasSalida(int salidas)
+    {
+        
+    }
 }

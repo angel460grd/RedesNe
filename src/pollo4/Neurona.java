@@ -28,6 +28,18 @@ public class Neurona {
     {
         entradas=enSaAnt;
     }
+    public void evaluar()
+    {
+        
+    }
+    public void CalcularError()
+    {
+        
+    }
+    public void AjustarPesos()
+    {
+        
+    }
     
     
 }
