@@ -7,6 +7,7 @@
 package pollo4;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,14 +16,29 @@ import java.util.ArrayList;
 public class Control {
     ArrayList<Capa> capas=new ArrayList<>();
     ArrayList<int[]>patronesEntrada=new ArrayList();
-    int entradas,salidas;
+    int Nentradas,nsalidas;
+    int[] salidas;
     public void entrenar()
     {
         
     }
-    public void AgragarCapa()
+   public void arquitectura()
+   {
+       int[] entrada=patronesEntrada.get(0);
+       this.AgragarCapa(entrada.length);
+       do {
+           int neuronas=Integer.parseInt( JOptionPane.showInputDialog("cantidad de neuronas") ) ;
+           this.AgragarCapa(neuronas);
+       } while (JOptionPane.showConfirmDialog(null, "otra capa interna")==1);
+       this.AgragarCapa(salidas.length);
+       
+   }
+    public void AgragarCapa(int nNeuronas)
     {
-        
+        //esto espara neuronas internas, se debe hacer antes de gragar la capa de salida
+        Capa cn=new Capa();
+        cn.crearNeuronas(nNeuronas);
+        capas.add(cn);
     }
     
 }

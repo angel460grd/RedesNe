@@ -30,7 +30,7 @@ public class Neurona {
     }
     public void evaluar()
     {
-        
+ 
     }
     public void CalcularError()
     {
@@ -40,6 +40,9 @@ public class Neurona {
     {
         
     }
-    
+    public void CrearEntradas(int nEntradas)
+    {
+        this.entradas=new int[nEntradas];
+    }
     
 }
