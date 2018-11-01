@@ -17,28 +17,40 @@ public class Control {
     ArrayList<Capa> capas=new ArrayList<>();
     ArrayList<int[]>patronesEntrada=new ArrayList();
     int Nentradas,nsalidas;
-    int[] salidas;
+    ArrayList<int[]>salidas=new ArrayList();
     public void entrenar()
     {
+        for(int i=0;i<patronesEntrada.size();i++)
+        {
+            capas.get(0).valorEntrada(patronesEntrada.get(i));
+            capas.get(capas.size()-1).crearNeuronasSalida( salidas.get(i) );
+            
+            
+        }
         
     }
    public void arquitectura()
    {
        int[] entrada=patronesEntrada.get(0);
-       this.AgragarCapa(entrada.length);
-       do {
-           int neuronas=Integer.parseInt( JOptionPane.showInputDialog("cantidad de neuronas") ) ;
-           this.AgragarCapa(neuronas);
-       } while (JOptionPane.showConfirmDialog(null, "otra capa interna")==1);
-       this.AgragarCapa(salidas.length);
+       int neuronasCapaAnterior=entrada.length;
+       int neuronas=Integer.parseInt( JOptionPane.showInputDialog("cantidad de neuronas") ) ;
+       this.AgragarCapa(neuronas,neuronasCapaAnterior);
+       while (JOptionPane.showConfirmDialog(null, "otra capa interna")==1){
+           neuronas=Integer.parseInt( JOptionPane.showInputDialog("cantidad de neuronas") ) ;
+           this.AgragarCapa(neuronas,neuronasCapaAnterior);
+           neuronasCapaAnterior=neuronas;
+           
+       }
+       this.AgragarCapa(salidas.get(0).length,neuronasCapaAnterior);
        
    }
-    public void AgragarCapa(int nNeuronas)
+    public void AgragarCapa(int nNeuronas,int entradas)
     {
         //esto espara neuronas internas, se debe hacer antes de gragar la capa de salida
         Capa cn=new Capa();
-        cn.crearNeuronas(nNeuronas);
+        cn.crearNeuronas(nNeuronas,entradas);
         capas.add(cn);
     }
+    
     
 }

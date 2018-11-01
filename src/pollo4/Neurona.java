@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
 public class Neurona {
     int[] entradas;
     double coeficiente;
-    double salida,salidaDeseada,gradiante,error,umbral,pez;
+    public double salida,salidaDeseada,gradiante,error,umbral,pez;
     double[]pesos;
     
     public void Crearpesos()

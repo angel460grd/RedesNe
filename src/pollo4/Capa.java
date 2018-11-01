@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author lenovo
  */
 public class Capa {
-    ArrayList<Neurona> neuronas=new ArrayList<>();
+    public ArrayList<Neurona> neuronas=new ArrayList<>();
     public void crearNeuronas(int nNeuronas,int entradas)
     {
         for (int i = 0; i < nNeuronas; i++){
@@ -20,11 +20,23 @@ public class Capa {
             n.CrearEntradas(entradas);
             n.Crearpesos();
             neuronas.add(n);
-
+     
         }        
     }
     public void crearNeuronasSalida(int[] salidas)
     {
         
+    }
+    public void valorEntrada(int[] entradas)
+    {        
+        for (Neurona n:neuronas)
+            n.agregarEntradas(entradas);
+    }
+    public void valorSalida(int[] salidas)
+    {        
+        for (int i = 0; i < neuronas.size(); i++) {
+            neuronas.get(i).salidaDeseada=salidas[i];
+        }
+            
     }
 }
