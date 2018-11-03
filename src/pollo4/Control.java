@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class Control {
     ArrayList<Capa> capas=new ArrayList<>();
     ArrayList<int[]>patronesEntrada=new ArrayList();
-    int Nentradas,nsalidas;
+    int nEntradas,nSalidas;
     ArrayList<int[]>salidas=new ArrayList();
     public void entrenar()
     {
@@ -32,16 +32,13 @@ public class Control {
    public void arquitectura()
    {
        int[] entrada=patronesEntrada.get(0);
-       int neuronasCapaAnterior=entrada.length;
-       int neuronas=Integer.parseInt( JOptionPane.showInputDialog("cantidad de neuronas") ) ;
-       this.AgragarCapa(neuronas,neuronasCapaAnterior);
-       while (JOptionPane.showConfirmDialog(null, "otra capa interna")==1){
-           neuronas=Integer.parseInt( JOptionPane.showInputDialog("cantidad de neuronas") ) ;
-           this.AgragarCapa(neuronas,neuronasCapaAnterior);
-           neuronasCapaAnterior=neuronas;
-           
+       int nNeuronas=entrada.length,nCapas=(int) Math.sqrt(nEntradas*nSalidas);
+            this.AgragarCapa(nNeuronas,nNeuronas);
+       for (int i = 1; i < nCapas; i++) {
+           this.AgragarCapa(nNeuronas+2,nNeuronas);
+           nNeuronas=nNeuronas+2;
        }
-       this.AgragarCapa(salidas.get(0).length,neuronasCapaAnterior);
+       this.AgragarCapa(salidas.get(0).length,nNeuronas);
        
    }
     public void AgragarCapa(int nNeuronas,int entradas)
@@ -51,6 +48,14 @@ public class Control {
         cn.crearNeuronas(nNeuronas,entradas);
         capas.add(cn);
     }
-    
+    public void sacarGradante()
+    {
+        Capa capaAnt= capas.get(capas.size()-1);
+        capaAnt.NeuronasGradinateS();
+        for (int i = capas.size()-2; i>=0; i--) {
+            capas.get(i).NeuronasGradinateH(capaAnt);
+            capaAnt=capas.get(i);
+        }
+    }
     
 }

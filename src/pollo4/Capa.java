@@ -39,4 +39,19 @@ public class Capa {
         }
             
     }
+    public void NeuronasGradinateH(Capa Anterior)
+    {
+        for (int i = 0; i < neuronas.size(); i++) {
+            int gradianteAcum=0;
+            for (Neurona nca : Anterior.neuronas) {
+                gradianteAcum+=nca.gradiante*nca.pesos[i];
+            }
+            neuronas.get(i).caluloGradinateH(gradianteAcum);
+        }
+    }
+    public void NeuronasGradinateS()
+    {
+        for(Neurona nS:neuronas)
+            nS.caluloGradinateS();
+    }
 }

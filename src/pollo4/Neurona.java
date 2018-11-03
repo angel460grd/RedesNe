@@ -44,5 +44,12 @@ public class Neurona {
     {
         this.entradas=new int[nEntradas];
     }
-    
+    public void caluloGradinateH(float GradianteAcum)
+    {
+        gradiante=salida*(1-salida)* GradianteAcum;
+    }
+    public void caluloGradinateS()
+    {
+        gradiante=salida*(1-salida)*(salidaDeseada-salida);
+    }
 }
