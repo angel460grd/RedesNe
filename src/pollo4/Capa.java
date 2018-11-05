@@ -63,5 +63,6 @@ public class Capa {
     {
         for(Neurona n:neuronas)
             n.evaluar2();
+        
     }
 }

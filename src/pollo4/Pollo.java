@@ -28,7 +28,6 @@ public class Pollo {
        int[] x3= {1,0};
        int[] x4= {1,1};
        int[] salida_deseada= {0,1,1,0};
-  
       c.valorEntrada(x1);
       c.valorEntrada(x2);
       c.valorEntrada(x3);
