@@ -54,4 +54,14 @@ public class Capa {
         for(Neurona nS:neuronas)
             nS.caluloGradinateS();
     }
+    public void ajustarPesosN()
+    {
+        for(Neurona n:neuronas)
+            n.ajustarPesos();
+    }
+    public void evaluarN()
+    {
+        for(Neurona n:neuronas)
+            n.evaluar2();
+    }
 }
