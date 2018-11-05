@@ -6,7 +6,14 @@ public class backpropagation
    {
     int  n_neurona_inter;
     
-    n_neurona_inter=neurona_entradas.length;  
+    n_neurona_inter=neurona_entradas.length; 
+    
+    for(int i= 0; i< neurona_entradas.length; i++)
+    {
+        
+    }
+    
+    
       
        
    }

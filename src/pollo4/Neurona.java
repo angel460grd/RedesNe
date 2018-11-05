@@ -1,9 +1,14 @@
 package pollo4;
 import java.text.DecimalFormat;
+import static javax.swing.text.html.HTML.Tag.HEAD;
 public class Neurona {
     int[] entradas;
     double coeficiente;
-    double salidaobtenida,salidaDeseada,gradiante,error,umbral,pez;
+
+    
+
+    public double salida,salidaDeseada,gradiante,error,umbral,pez;
+
     double[]pesos;
     
     public void Crearpesos()
@@ -19,7 +24,7 @@ public class Neurona {
     }
     public void evaluar()
     {
-        
+ 
     }
     //Error
     public double CalcularError()
@@ -27,6 +32,16 @@ public class Neurona {
        error=salidaDeseada-salidaobtenida;
        return error;
     }
-    
-    
+    public void CrearEntradas(int nEntradas)
+    {
+        this.entradas=new int[nEntradas];
+    }
+    public void caluloGradinateH(float GradianteAcum)
+    {
+        gradiante=salida*(1-salida)* GradianteAcum;
+    }
+    public void caluloGradinateS()
+    {
+        gradiante=salida*(1-salida)*(salidaDeseada-salida);
+    }
 }
