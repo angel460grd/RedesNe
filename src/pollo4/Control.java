@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Control {
     ArrayList<Capa> capas=new ArrayList<>();
-    ArrayList<int[]>patronesEntrada=new ArrayList(),salidas2=new ArrayList<>();
+    ArrayList<double[]>patronesEntrada=new ArrayList(),salidas2=new ArrayList<>();
     int entradas,salidas;
     
     double coeficiente;
@@ -45,7 +45,7 @@ public class Control {
     }
        public void arquitectura()
    {
-       int[] entrada=patronesEntrada.get(0);
+       double[] entrada=patronesEntrada.get(0);
        int nNeuronas=entrada.length,nCapas=(int) Math.sqrt(nEntradas*nSalidas);
             this.AgragarCapa(nNeuronas,nNeuronas);
        for (int i = 1; i < nCapas; i++) {
@@ -81,7 +81,7 @@ public class Control {
         for(int i=0;i<patronesEntrada.size();i++)
         {
             capas.get(0).valorEntrada(patronesEntrada.get(i));
-            capas.get(capas.size()-1).crearNeuronasSalida( salidas2.get(i) );
+            capas.get(capas.size()-1).valorSalida(salidas2.get(i) );
             this.sacarGradante();
             this.evaluar();
             this.AjustarPesos();
@@ -91,8 +91,12 @@ public class Control {
     }
     public void evaluar()
     {
-       for(Capa c:capas)
-           c.evaluarN();
+       capas.get(0).evaluarN();
+       
+        for (int i = 1; i < capas.size(); i++) {
+            capas.get(i).agregarEn(capas.get(1-1));
+            capas.get(i).evaluarN();
+        }
     }
     public void ajuste()
     {
