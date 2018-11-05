@@ -29,7 +29,7 @@ public class Neurona {
     //Error
     public double CalcularError()
     {
-       error=salidaDeseada-salidaobtenida;
+       error=salidaDeseada-salida;
        return error;
     }
     public void CrearEntradas(int nEntradas)

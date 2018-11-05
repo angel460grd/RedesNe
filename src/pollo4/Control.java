@@ -27,19 +27,17 @@ public class Control {
     
     public void AjustarPesos(  )
     {
-        //Para sacar el gradiante
-        Neurona n = new Neurona();
-       error= n.CalcularError();
-       int contador =0;
-       if(contador==0)
-       {
-           gradiante=salidaobtenida* (1-salidaobtenida)*error;
-           contador=1;
-       }
-       else 
-       {
-           
-       }
+        
+        
+        
+        for(int i=0; i<0;i++)
+        {
+            
+        }   
+     
+        
+        
+        
         
         
     }
