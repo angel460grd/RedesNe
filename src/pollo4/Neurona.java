@@ -44,4 +44,15 @@ public class Neurona {
     {
         gradiante=salida*(1-salida)*(salidaDeseada-salida);
     }
+    public void evaluar2()
+    {
+        salida=0;
+        for (int i = 0; i < entradas.length; i++)
+            salida+=entradas[i]*pesos[i]-umbral;
+    }
+    public void ajustarPesos()
+    {
+        for (int i = 0; i < pesos.length; i++) 
+            pesos[i]+=pez*entradas[i]*gradiante;
+    }
 }

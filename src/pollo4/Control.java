@@ -82,10 +82,21 @@ public class Control {
         {
             capas.get(0).valorEntrada(patronesEntrada.get(i));
             capas.get(capas.size()-1).crearNeuronasSalida( salidas2.get(i) );
-            
+            this.sacarGradante();
+            this.evaluar();
+            this.AjustarPesos();
             
         }
         
     }
-    
+    public void evaluar()
+    {
+       for(Capa c:capas)
+           c.evaluarN();
+    }
+    public void ajuste()
+    {
+        for(Capa c:capas)
+            c.ajustarPesosN();
+    }
 }
