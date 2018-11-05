@@ -7,55 +7,42 @@
 package pollo4;
 
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
-/**
- *
- * @author lenovo
- */
 public class Control {
     ArrayList<Capa> capas=new ArrayList<>();
     ArrayList<int[]>patronesEntrada=new ArrayList();
-    int nEntradas,nSalidas;
-    ArrayList<int[]>salidas=new ArrayList();
+    int entradas,salidas;
+    
+    double coeficiente;
+    double salidaobtenida,salidaDeseada,gradiante,error,umbral,pez;
+    double[]pesos;
     public void entrenar()
     {
-        for(int i=0;i<patronesEntrada.size();i++)
-        {
-            capas.get(0).valorEntrada(patronesEntrada.get(i));
-            capas.get(capas.size()-1).crearNeuronasSalida( salidas.get(i) );
-            
-            
-        }
         
     }
-   public void arquitectura()
-   {
-       int[] entrada=patronesEntrada.get(0);
-       int nNeuronas=entrada.length,nCapas=(int) Math.sqrt(nEntradas*nSalidas);
-            this.AgragarCapa(nNeuronas,nNeuronas);
-       for (int i = 1; i < nCapas; i++) {
-           this.AgragarCapa(nNeuronas+2,nNeuronas);
-           nNeuronas=nNeuronas+2;
+    public void AgragarCapa()
+    {
+        
+    }
+    
+    public void AjustarPesos(  )
+    {
+        //Para sacar el gradiante
+        Neurona n = new Neurona();
+       error= n.CalcularError();
+       int contador =0;
+       if(contador==0)
+       {
+           gradiante=salidaobtenida* (1-salidaobtenida)*error;
+           contador=1;
        }
-       this.AgragarCapa(salidas.get(0).length,nNeuronas);
-       
-   }
-    public void AgragarCapa(int nNeuronas,int entradas)
-    {
-        //esto espara neuronas internas, se debe hacer antes de gragar la capa de salida
-        Capa cn=new Capa();
-        cn.crearNeuronas(nNeuronas,entradas);
-        capas.add(cn);
+       else 
+       {
+           
+       }
+        
+        
     }
-    public void sacarGradante()
-    {
-        Capa capaAnt= capas.get(capas.size()-1);
-        capaAnt.NeuronasGradinateS();
-        for (int i = capas.size()-2; i>=0; i--) {
-            capas.get(i).NeuronasGradinateH(capaAnt);
-            capaAnt=capas.get(i);
-        }
-    }
+    
     
 }
