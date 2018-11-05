@@ -6,6 +6,8 @@
 
 package pollo4;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author lenovo
@@ -16,6 +18,24 @@ public class Pollo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //para Backpropagation
+        
+       //Pedir entradas
+       
+       Capa c = new Capa();
+       int[] x1= {0,0};
+       int[] x2= {0,1};
+       int[] x3= {1,0};
+       int[] x4= {1,1};
+       int[] salida_deseada= {0,1,1,0};
+  
+      c.valorEntrada(x1);
+      c.valorEntrada(x2);
+      c.valorEntrada(x3);
+      c.valorEntrada(x4);
+      c.valorSalida(salida_deseada);
+       
+        
 //        hopfield p=new hopfield();
 //        int[] x1={1, 1, 1,-1};
 //        int[] x2={-1,-1,-1,1};
@@ -36,15 +56,15 @@ public class Pollo {
 //            System.out.println();
 //        for(int i:p.evaluar(a))
 //           System.out.print(i+",");
-        Kohonen k=new Kohonen();
+     //   Kohonen k=new Kohonen();
        
-        double[][] entradas=new double[4][];
-         entradas[0]=new double[]{0.5, 0.1};
-         entradas[1]=new double[]{0.3, 0.6}; 
-         entradas[2]=new double[]{0.4, 0.7}; entradas[3]=new double[]{0.3, 1.0};
-         k.salidas=2;
-         k.EntradaTajo(entradas);
-         k.CrearPesos();
+       // double[][] entradas=new double[4][];
+      //   entradas[0]=new double[]{0.5, 0.1};
+        // entradas[1]=new double[]{0.3, 0.6}; 
+        // entradas[2]=new double[]{0.4, 0.7}; entradas[3]=new double[]{0.3, 1.0};
+        // k.salidas=2;
+        // k.EntradaTajo(entradas);
+         //k.CrearPesos();
         
 
     }
