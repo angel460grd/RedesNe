@@ -1,58 +1,63 @@
 package pollo4;
+
 import java.text.DecimalFormat;
 import static javax.swing.text.html.HTML.Tag.HEAD;
+
 public class Neurona {
+
     int[] entradas;
     double coeficiente;
 
-    
+    public double salida, salidaDeseada, gradiante, error, umbral, pez;
 
-    public double salida,salidaDeseada,gradiante,error,umbral,pez;
+    double[] pesos;
 
-    double[]pesos;
-    
-    public void Crearpesos()
-    {
+    public void Crearpesos() {
         DecimalFormat df = new DecimalFormat("#.##");
-        pesos=new double[entradas.length];
-        for (int i = 0; i < pesos.length; i++)
-            pesos[i]=Float.parseFloat( df.format( Math.random()) );
+        pesos = new double[entradas.length];
+        for (int i = 0; i < pesos.length; i++) {
+            pesos[i] = Float.parseFloat(df.format(Math.random()));
+        }
     }
-    public void agregarEntradas(int[] enSaAnt)
-    {
-        entradas=enSaAnt;
+
+    public void agregarEntradas(int[] enSaAnt) {
+        entradas = enSaAnt;
     }
-    public void evaluar()
-    {
- 
+
+    public void evaluar() {
+
     }
+
     //Error
-    public double CalcularError()
-    {
-       error=salidaDeseada-salida;
-       return error;
+    public double CalcularError() {
+        error = salidaDeseada - salida;
+        return error;
     }
-    public void CrearEntradas(int nEntradas)
-    {
-        this.entradas=new int[nEntradas];
+
+    public void CrearEntradas(int nEntradas) {
+        this.entradas = new int[nEntradas];
     }
-    public void caluloGradinateH(float GradianteAcum)
-    {
-        gradiante=salida*(1-salida)* GradianteAcum;
+
+    public void caluloGradinateH(float GradianteAcum) {
+        gradiante = salida * (1 - salida) * GradianteAcum;
     }
-    public void caluloGradinateS()
-    {
-        gradiante=salida*(1-salida)*(salidaDeseada-salida);
+
+    public void caluloGradinateS() {
+        gradiante = salida * (1 - salida) * (salidaDeseada - salida);
     }
-    public void evaluar2()
-    {
-        salida=0;
-        for (int i = 0; i < entradas.length; i++)
-            salida+=entradas[i]*pesos[i]-umbral;
+
+    public void evaluar2() {
+        salida = 0;
+        for (int i = 0; i < entradas.length; i++) {
+            salida += entradas[i] * pesos[i];
+        }
+        salida = salida - umbral;
+        salida = 1 / (1 + Math.exp(salida));
     }
-    public void ajustarPesos()
-    {
-        for (int i = 0; i < pesos.length; i++) 
-            pesos[i]+=pez*entradas[i]*gradiante;
+
+    public void ajustarPesos() {
+        for (int i = 0; i < pesos.length; i++) {
+            pesos[i] += pez * entradas[i] * gradiante;
+        }
     }
 }
