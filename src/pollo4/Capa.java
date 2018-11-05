@@ -23,16 +23,16 @@ public class Capa {
      
         }        
     }
-    public void crearNeuronasSalida(int[] salidas)
+    public void crearNeuronasSalida(double[] salidas)
     {
         
     }
-    public void valorEntrada(int[] entradas)
+    public void valorEntrada(double[] entradas)
     {        
         for (Neurona n:neuronas)
             n.agregarEntradas(entradas);
     }
-    public void valorSalida(int[] salidas)
+    public void valorSalida(double[] salidas)
     {        
         for (int i = 0; i < neuronas.size(); i++) {
             neuronas.get(i).salidaDeseada=salidas[i];
@@ -64,5 +64,13 @@ public class Capa {
         for(Neurona n:neuronas)
             n.evaluar2();
         
+    }
+      public void agregarEn(Capa Ant)
+    {
+        double[] entrada=new double[Ant.neuronas.size()];
+        for (int i = 0; i < entrada.length; i++)
+            entrada[i]=Ant.neuronas.get(i).salida;
+        for (Neurona n:neuronas)
+            n.agregarEntradas(entrada);
     }
 }

@@ -5,7 +5,7 @@ import static javax.swing.text.html.HTML.Tag.HEAD;
 
 public class Neurona {
 
-    int[] entradas;
+    double[] entradas;
     double coeficiente;
 
     public double salida, salidaDeseada, gradiante, error, umbral, pez;
@@ -20,7 +20,7 @@ public class Neurona {
         }
     }
 
-    public void agregarEntradas(int[] enSaAnt) {
+    public void agregarEntradas(double[] enSaAnt) {
         entradas = enSaAnt;
     }
 
@@ -35,7 +35,7 @@ public class Neurona {
     }
 
     public void CrearEntradas(int nEntradas) {
-        this.entradas = new int[nEntradas];
+        this.entradas = new double[nEntradas];
     }
 
     public void caluloGradinateH(float GradianteAcum) {
