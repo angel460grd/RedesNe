@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pollo4;
-
 import java.text.DecimalFormat;
-
-/**
- *
- * @author lenovo
- */
 public class Neurona {
     int[] entradas;
     double coeficiente;
-    double salida,salidaDeseada,gradiante,error,umbral,pez;
+    double salidaobtenida,salidaDeseada,gradiante,error,umbral,pez;
     double[]pesos;
     
     public void Crearpesos()
@@ -32,13 +21,11 @@ public class Neurona {
     {
         
     }
-    public void CalcularError()
+    //Error
+    public double CalcularError()
     {
-        
-    }
-    public void AjustarPesos()
-    {
-        
+       error=salidaDeseada-salidaobtenida;
+       return error;
     }
     
     
