@@ -8,11 +8,18 @@ package pollo4;
 import java.util.ArrayList;
 
 public class Control {
+<<<<<<< HEAD
 
     ArrayList<Capa> capas = new ArrayList<>();
     ArrayList<int[]> patronesEntrada = new ArrayList(), salidas2 = new ArrayList<>();
     int entradas, salidas;
 
+=======
+    ArrayList<Capa> capas=new ArrayList<>();
+    ArrayList<double[]>patronesEntrada=new ArrayList(),salidas2=new ArrayList<>();
+    int entradas,salidas;
+    
+>>>>>>> ce40ceaec13c9f86d240f1cc6d4073a3bfb02122
     double coeficiente;
     double salidaobtenida, salidaDeseada, gradiante, error, umbral, pez;
     double[] pesos;
@@ -34,6 +41,7 @@ public class Control {
         }
 
     }
+<<<<<<< HEAD
 
     public void arquitectura() {
         int[] entrada = patronesEntrada.get(0);
@@ -48,6 +56,22 @@ public class Control {
     }
 
     public void AgragarCapa(int nNeuronas, int entradas) {
+=======
+       public void arquitectura()
+   {
+       double[] entrada=patronesEntrada.get(0);
+       int nNeuronas=entrada.length,nCapas=(int) Math.sqrt(nEntradas*nSalidas);
+            this.AgragarCapa(nNeuronas,nNeuronas);
+       for (int i = 1; i < nCapas; i++) {
+           this.AgragarCapa(nNeuronas+2,nNeuronas);
+           nNeuronas=nNeuronas+2;
+       }
+       this.AgragarCapa(salidas2.get(0).length,nNeuronas);
+       
+   }
+    public void AgragarCapa(int nNeuronas,int entradas)
+    {
+>>>>>>> ce40ceaec13c9f86d240f1cc6d4073a3bfb02122
         //esto espara neuronas internas, se debe hacer antes de gragar la capa de salida
         Capa cn = new Capa();
         cn.crearNeuronas(nNeuronas, entradas);
@@ -67,6 +91,7 @@ public class Control {
         error = n.CalcularError();
 
     }
+<<<<<<< HEAD
 
     public void entrenar2() {
         int iterador = 0;
@@ -86,6 +111,28 @@ public class Control {
     public void evaluar() {
         for (Capa c : capas) {
             c.evaluarN();
+=======
+    public void entrenar2()
+    {
+        for(int i=0;i<patronesEntrada.size();i++)
+        {
+            capas.get(0).valorEntrada(patronesEntrada.get(i));
+            capas.get(capas.size()-1).valorSalida(salidas2.get(i) );
+            this.sacarGradante();
+            this.evaluar();
+            this.AjustarPesos();
+            
+        }
+        
+    }
+    public void evaluar()
+    {
+       capas.get(0).evaluarN();
+       
+        for (int i = 1; i < capas.size(); i++) {
+            capas.get(i).agregarEn(capas.get(1-1));
+            capas.get(i).evaluarN();
+>>>>>>> ce40ceaec13c9f86d240f1cc6d4073a3bfb02122
         }
     }
 
