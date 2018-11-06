@@ -118,9 +118,8 @@ public class Control {
         {
             capas.get(0).valorEntrada(patronesEntrada.get(i));
             capas.get(capas.size()-1).valorSalida(salidas2.get(i) );
-           
+            this.sacarGradante();
             this.evaluar();
-             this.sacarGradante();
             this.AjustarPesos();
             
         }
@@ -131,7 +130,7 @@ public class Control {
        capas.get(0).evaluarN();
        
         for (int i = 1; i < capas.size(); i++) {
-            capas.get(i).agregarEn(capas.get(i-1));
+            capas.get(i).agregarEn(capas.get(1-1));
             capas.get(i).evaluarN();
 >>>>>>> ce40ceaec13c9f86d240f1cc6d4073a3bfb02122
         }
