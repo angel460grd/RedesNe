@@ -73,4 +73,17 @@ public class Capa {
         for (Neurona n:neuronas)
             n.agregarEntradas(entrada);
     }
+    public boolean aprendio(double errorA)
+    {
+        for(Neurona n:neuronas)
+        {    
+            if(Math.abs( n.CalcularError())>errorA)
+            {
+                System.out.println(n.CalcularError());
+                return false;
+            }
+            System.out.println(n.CalcularError());
+        }
+        return true;
+    }
 }

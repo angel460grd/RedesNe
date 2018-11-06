@@ -8,15 +8,20 @@ public class Neurona {
     double[] entradas;
     double coeficiente;
 
-    public double salida, salidaDeseada, gradiante, error, umbral, pez;
+    public double salida, salidaDeseada, gradiante, error, umbral=1, pez=0.6;
 
     double[] pesos;
+
+    public Neurona() {
+        DecimalFormat df = new DecimalFormat("#.##");
+        umbral= Float.parseFloat(df.format(Math.random()*10));
+    }
 
     public void Crearpesos() {
         DecimalFormat df = new DecimalFormat("#.##");
         pesos = new double[entradas.length];
         for (int i = 0; i < pesos.length; i++) {
-            pesos[i] = Float.parseFloat(df.format(Math.random()));
+            pesos[i] = Float.parseFloat(df.format(Math.random()*10));
         }
     }
 
@@ -49,15 +54,22 @@ public class Neurona {
     public void evaluar2() {
         salida = 0;
         for (int i = 0; i < entradas.length; i++) {
-            salida += entradas[i] * pesos[i];
+            salida += entradas[i] * pesos[i]-umbral;
         }
         salida = salida - umbral;
-        salida = 1 / (1 + Math.exp(salida));
+        salida = 1 / (1 + Math.exp(-salida));
     }
 
     public void ajustarPesos() {
         for (int i = 0; i < pesos.length; i++) {
             pesos[i] += pez * entradas[i] * gradiante;
         }
+    }
+    public void datos()
+    {
+        String l="";
+        for(double i:entradas)
+            l+=i+" ";
+        System.out.println(l+" "+salida+" "+salidaDeseada+" "+error);
     }
 }

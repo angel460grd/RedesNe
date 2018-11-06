@@ -13,7 +13,7 @@ public class Control {
     ArrayList<double[]>patronesEntrada=new ArrayList(),salidas2=new ArrayList<>();
     int entradas,salidas;
     
-    double coeficiente;
+    double errorAceptado;
     double salidaobtenida,salidaDeseada,gradiante,error,umbral,pez;
     double[]pesos;
     
@@ -76,17 +76,25 @@ public class Control {
         error= n.CalcularError();
        
     }
-    public void entrenar2()
+    public String entrenar2()
     {
+        int perro=0; 
+     do{   
         for(int i=0;i<patronesEntrada.size();i++)
         {
             capas.get(0).valorEntrada(patronesEntrada.get(i));
             capas.get(capas.size()-1).valorSalida(salidas2.get(i) );
-            this.sacarGradante();
             this.evaluar();
-            this.AjustarPesos();
+            this.sacarGradante();
+            this.ajuste();
             
         }
+        perro++;
+     }while(perro<500&&!capas.get(capas.size()-1).aprendio(errorAceptado));
+     if(perro==500)
+         return "no se aprendio";
+     else 
+         return "se logro entrenar";
         
     }
     public void evaluar()
@@ -94,7 +102,7 @@ public class Control {
        capas.get(0).evaluarN();
        
         for (int i = 1; i < capas.size(); i++) {
-            capas.get(i).agregarEn(capas.get(1-1));
+            capas.get(i).agregarEn(capas.get(i-1));
             capas.get(i).evaluarN();
         }
     }

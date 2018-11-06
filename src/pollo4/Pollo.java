@@ -22,17 +22,24 @@ public class Pollo {
         
        //Pedir entradas
        //caso 1
-       Capa c = new Capa();
+       Control c = new Control();
        double[] x1= {0,0};
        double[] x2= {0,1};
        double[] x3= {1,0};
        double[] x4= {1,1};
-       double[] salida_deseada= {0,1,1,0};
-      c.valorEntrada(x1);
-      c.valorEntrada(x2);
-      c.valorEntrada(x3);
-      c.valorEntrada(x4);
-      c.valorSalida(salida_deseada);
+       c.patronesEntrada.add(x1);
+       c.patronesEntrada.add(x2);
+       c.patronesEntrada.add(x3);
+       c.patronesEntrada.add(x4);
+       
+       c.salidas2.add(new double[]{0});
+       c.salidas2.add(new double[]{1});
+       c.salidas2.add(new double[]{1});
+       c.salidas2.add(new double[]{0});
+       c.errorAceptado=0.01;
+       c.arquitectura();
+       System.out.println(c.entrenar2());
+       
       
       /*
       int[] x1= {0,0};
