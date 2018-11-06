@@ -23,11 +23,11 @@ public class Pollo {
        //Pedir entradas
        //caso 1
        Capa c = new Capa();
-       int[] x1= {0,0};
-       int[] x2= {0,1};
-       int[] x3= {1,0};
-       int[] x4= {1,1};
-       int[] salida_deseada= {0,1,1,0};
+       double[] x1= {0,0};
+       double[] x2= {0,1};
+       double[] x3= {1,0};
+       double[] x4= {1,1};
+       double[] salida_deseada= {0,1,1,0};
       c.valorEntrada(x1);
       c.valorEntrada(x2);
       c.valorEntrada(x3);
